@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Enter Movie";
+    ViewData["Page Heading"] = "Enter a Movie";
+}
+
+@model Mission6_pthoma24.Models.MovieEntry
+
+<div class="container p-3 bg-light">
+    <div class="d-flex justify-content-center">
+        <form method="post">
+            <label asp-for="Title">Title:</label>
+            <input asp-for="Title" /><br />
+
+            <label asp-for="Category">Category:</label>
+            <input asp-for="Category" /><br />
+
+            <label asp-for="Year">Year:</label>
+            <input asp-for="Year" /><br />
+
+            <label asp-for="Director">Director:</label>
+            <input asp-for="Director" /><br />
+
+            <label asp-for="Rating">Rating:</label>
+            <select asp-for="Rating">
+                <option value="G">G</option>
+                <option value="PG">PG</option>
+                <option value="PG-13">PG-13</option>
+                <option value="R">R</option>
+            </select><br />
+
+            <label asp-for="Edited">Edited:</label>
+            <select asp-for="Edited">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select><br />
+
+            <label asp-for="Lent_to">Lent To:</label>
+            <input asp-for="Lent_to" /><br />
+
+            <label asp-for="Notes">Notes:</label>
+            <input asp-for="Notes" /><br />
+
+            <div class="d-flex justify-content-center"><button type="submit">Add Movie</button></div>
+
+            <div asp-validation-summary="All"></div>
+        </form>
+    </div>
+</div>
