@@ -11,9 +11,6 @@
             <label asp-for="Title">Title:</label>
             <input asp-for="Title" /><br />
 
-            <label asp-for="Category">Category:</label>
-            <input asp-for="Category" /><br />
-
             <label asp-for="Year">Year:</label>
             <input asp-for="Year" /><br />
 
@@ -39,6 +36,15 @@
 
             <label asp-for="Notes">Notes:</label>
             <input asp-for="Notes" /><br />
+
+            <label asp-for="CategoryId">Category ID:</label>
+            <select asp-for="CategoryId">
+                <option value="">Select a Category</option>
+                @foreach (Category c in ViewBag.Categories)
+                {
+                    <option value="@c.CategoryId">@c.CategoryName</option>
+                }
+            </select><br />
 
             <div class="d-flex justify-content-center"><button type="submit">Add Movie</button></div>
 

@@ -9,7 +9,7 @@ using Mission6_pthoma24.Models;
 namespace Mission6_pthoma24.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    [Migration("20230210000208_Initial")]
+    [Migration("20230221161932_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -18,15 +18,45 @@ namespace Mission6_pthoma24.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.32");
 
+            modelBuilder.Entity("Mission6_pthoma24.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Fantasy/Adventure"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Action"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CategoryName = "Sci-Fi"
+                        });
+                });
+
             modelBuilder.Entity("Mission6_pthoma24.Models.MovieEntry", b =>
                 {
                     b.Property<int>("MovieId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -56,13 +86,15 @@ namespace Mission6_pthoma24.Migrations
 
                     b.HasKey("MovieId");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Entries");
 
                     b.HasData(
                         new
                         {
                             MovieId = 1,
-                            Category = "Fantasy/Adventure",
+                            CategoryId = 1,
                             Director = "Peter Jackson",
                             Edited = false,
                             Lent_to = "",
@@ -74,7 +106,7 @@ namespace Mission6_pthoma24.Migrations
                         new
                         {
                             MovieId = 2,
-                            Category = "Fantasy/Adventure",
+                            CategoryId = 1,
                             Director = "Peter Jackson",
                             Edited = false,
                             Lent_to = "",
@@ -86,7 +118,7 @@ namespace Mission6_pthoma24.Migrations
                         new
                         {
                             MovieId = 3,
-                            Category = "Fantasy/Adventure",
+                            CategoryId = 1,
                             Director = "Peter Jackson",
                             Edited = false,
                             Lent_to = "",
@@ -95,6 +127,15 @@ namespace Mission6_pthoma24.Migrations
                             Title = "The Lord of the Rings: The Return of the King",
                             Year = (short)2003
                         });
+                });
+
+            modelBuilder.Entity("Mission6_pthoma24.Models.MovieEntry", b =>
+                {
+                    b.HasOne("Mission6_pthoma24.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

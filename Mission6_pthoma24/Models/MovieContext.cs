@@ -16,14 +16,33 @@ namespace Mission6_pthoma24.Models
 
         public DbSet<MovieEntry> Entries { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.Entity<Category>().HasData(
+                new Category
+                {
+                    CategoryId = 1,
+                    CategoryName = "Fantasy/Adventure"
+                },
+               new Category
+               {
+                   CategoryId = 2,
+                   CategoryName = "Action"
+               },
+               new Category
+               {
+                   CategoryId = 3,
+                   CategoryName = "Sci-Fi"
+               });
+
             mb.Entity<MovieEntry>().HasData(
-            
+
                 new MovieEntry
                 {
                     MovieId = 1,
-                    Category = "Fantasy/Adventure",
+                    CategoryId = 1,
                     Title = "The Lord of the Rings: The Fellowship of the Ring",
                     Year = 2001,
                     Director = "Peter Jackson",
@@ -35,7 +54,7 @@ namespace Mission6_pthoma24.Models
                 new MovieEntry
                 {
                     MovieId = 2,
-                    Category = "Fantasy/Adventure",
+                    CategoryId = 1,
                     Title = "The Lord of the Rings: The Two Towers",
                     Year = 2002,
                     Director = "Peter Jackson",
@@ -47,7 +66,7 @@ namespace Mission6_pthoma24.Models
                 new MovieEntry
                 {
                     MovieId = 3,
-                    Category = "Fantasy/Adventure",
+                    CategoryId = 1,
                     Title = "The Lord of the Rings: The Return of the King",
                     Year = 2003,
                     Director = "Peter Jackson",

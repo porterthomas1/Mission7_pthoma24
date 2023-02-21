@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "My Movies";
+    ViewData["Page Heading"] = "My Movies";
+}
+
+<!-- Recieve the list of MovieEntry entries -->
+@model List<MovieEntry>
+
+<table class="table table-bordered table-striped">
+
+    <thread class="font-weight-bold">
+        <tr> <!-- "table row" - syntax for a table row -->
+            <td>Category</td> <!-- "table domain" - syntax for a table column -->
+            <td>Title</td>
+            <td>Year</td>
+            <td>Director</td>
+            <td>Rating</td>
+            <td>Edited</td>
+            <td>Lent To</td>
+            <td>Notes</td>
+        </tr>
+    </thread>
+
+    <tbody>
+        <!-- Reference the connected model in the header and iterate through each model element (Make sure to capitalize the "M" in "Model") -->
+        @foreach (var x in Model)
+            {
+                <!-- Populate table body with a row for each entry, having each column referencing its respective database column using Razor code -->
+                <tr>
+                    <td>@x.Category.CategoryName</td>
+                    <td>@x.Title</td>
+                    <td>@x.Year</td>
+                    <td>@x.Director</td>
+                    <td>@x.Rating</td>
+                    <td>@x.Edited</td>
+                    <td>@x.Lent_to</td>
+                    <td>@x.Notes</td>
+
+                    <td><a asp-controller="Home" asp-action="Edit" asp-route-movieid="@x.MovieId">Edit</a></td>
+                    <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@x.MovieId">Delete</a></td>
+                </tr>
+            }
+    </tbody>
+
+</table>

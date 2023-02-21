@@ -53,7 +53,7 @@ namespace Mission6_pthoma24
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{movieid?}");
             });
         }
     }
