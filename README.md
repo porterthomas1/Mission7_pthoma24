@@ -8,13 +8,16 @@ Requirements included creating navigation header with a "My Podcasts" page link,
 
 # Website Preview
 
-(1/4)
+(1/5)
+![Screenshot 2023-02-27 140958](https://user-images.githubusercontent.com/103624496/221688632-64580fc6-e9e9-4b34-8f7b-5f595ed476fd.png)
+
+(2/5)
 
 
-(2/4)
+(3/5)
 
 
-(3/4)
+(4/5)
 
 
-(4/4)
+(5/5)
